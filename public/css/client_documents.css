@@ -1,0 +1,182 @@
+.documents-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid var(--primary-gold);
+}
+
+.documents-title {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.doc-alert {
+    border-radius: 10px;
+}
+
+.documents-tabs {
+    border-bottom: 1px solid #e9ecef;
+    flex-wrap: wrap;
+}
+
+.documents-tabs .nav-link {
+    color: #6c757d;
+    font-weight: 500;
+    border: none;
+    border-bottom: 2px solid transparent;
+}
+
+.documents-tabs .nav-link.active {
+    color: var(--primary-gold);
+    background: none;
+    border-bottom: 2px solid var(--primary-gold);
+}
+
+.doc-count-badge {
+    background-color: #e9ecef;
+    color: #495057;
+    font-size: 0.7rem;
+    margin-left: 4px;
+}
+
+.documents-tabs .nav-link.active .doc-count-badge {
+    background-color: var(--primary-gold);
+    color: #fff;
+}
+
+.documents-tab-content {
+    padding-top: 1rem;
+}
+
+.doc-upload-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.doc-file-input {
+    max-width: 320px;
+    flex: 1 1 220px;
+}
+
+.btn-doc-upload {
+    background-color: var(--primary-gold);
+    border: none;
+    color: #fff;
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.btn-doc-upload:hover {
+    opacity: 0.9;
+    color: #fff;
+}
+
+.doc-empty {
+    margin: 0;
+    padding: 1rem 0;
+}
+
+.doc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.doc-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background-color: var(--card-bg, #f8f9fa);
+    border: 1px solid #eef0f2;
+    flex-wrap: wrap;
+}
+
+.doc-item-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.doc-item-icon {
+    font-size: 1.3rem;
+    color: var(--primary-gold);
+    flex-shrink: 0;
+}
+
+.doc-item-meta {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.doc-item-name {
+    font-weight: 500;
+    font-size: 0.92rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 320px;
+}
+
+.doc-item-sub {
+    font-size: 0.78rem;
+    color: #6c757d;
+}
+
+.doc-item-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.doc-delete-form {
+    display: inline;
+}
+
+.btn-doc-action {
+    background: transparent;
+    border: 1px solid #dee2e6;
+    color: #495057;
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+.btn-doc-action:hover {
+    background-color: #e9ecef;
+}
+
+.btn-doc-delete {
+    color: #dc3545;
+    border-color: #f5c2c7;
+}
+
+.btn-doc-delete:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+@media (max-width: 576px) {
+    .doc-item-name {
+        max-width: 160px;
+    }
+    .doc-upload-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .doc-file-input {
+        max-width: 100%;
+    }
+}
+
+html[dir="rtl"] .documents-tabs .nav-link.active {
+    border-bottom: 2px solid var(--primary-gold);
+}

@@ -1,0 +1,161 @@
+
+.settings-container .card {
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+html.dark-mode .settings-container .card {
+    box-shadow: none;
+}
+
+.settings-container .card-header {
+    background-color: transparent;
+    border-bottom: 1px solid var(--bs-border-color);
+    padding: 1.25rem 1.5rem;
+}
+
+.settings-container .card-title {
+    font-weight: 600;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--bs-border-color);
+    transition: background-color 0.2s ease;
+}
+
+.setting-item .info {
+    flex: 1 1 220px;
+    min-width: 0;
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-item:hover {
+    background-color: var(--bs-tertiary-bg-rgb, rgba(0,0,0,0.02));
+}
+
+html.dark-mode .setting-item:hover {
+     background-color: rgba(255, 255, 255, 0.05);
+}
+
+.setting-item .info h6 {
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+.setting-item .info p {
+    margin-bottom: 0;
+    font-size: 0.875rem;
+    color: var(--bs-secondary-color);
+}
+
+
+.form-switch .form-check-input {
+    width: 3.5rem;
+    height: 1.75rem;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(0,0,0,0.25)'/%3e%3c/svg%3e");
+    transition: background-position .15s ease-in-out;
+}
+.form-switch .form-check-input:focus {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%2386b7fe'/%3e%3c/svg%3e");
+}
+.form-switch .form-check-input:checked {
+    background-position: right center;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}
+
+
+.language-buttons .btn {
+    font-weight: 500;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    transition: all 0.2s ease;
+}
+.language-buttons .btn.btn-primary {
+    box-shadow: 0 4px 8px rgba(88, 101, 242, 0.2);
+}
+
+/* Company Settings form */
+.company-settings-row {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.company-logo-field {
+    flex: 0 0 160px;
+}
+
+.company-fields-col {
+    flex: 1 1 320px;
+    min-width: 0;
+}
+
+.company-logo-preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 0.75rem;
+    border: 1px dashed var(--bs-border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    background-color: var(--bs-tertiary-bg, rgba(0,0,0,0.02));
+}
+
+.company-logo-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.company-logo-preview i {
+    font-size: 2.25rem;
+    color: var(--bs-secondary-color);
+}
+
+.theme-color-input-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.theme-color-input-group .form-control-color {
+    flex: 0 0 3.5rem;
+    padding: 0.25rem;
+}
+
+.theme-color-input-group input[type="text"] {
+    flex: 1 1 auto;
+    text-transform: lowercase;
+}
+
+@media (max-width: 575.98px) {
+    .setting-item {
+        padding: 1rem 1.25rem;
+    }
+    .setting-item .action {
+        width: 100%;
+    }
+    .language-buttons.btn-group {
+        display: flex;
+        width: 100%;
+    }
+    .language-buttons .btn {
+        flex: 1 1 0;
+        padding: 0.6rem 0.5rem;
+        font-size: 0.9rem;
+    }
+}

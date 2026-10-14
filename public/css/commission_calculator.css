@@ -1,0 +1,119 @@
+/* commission_calculator.css
+   Styles for the Commission Calculator page. Follows the same
+   --tm-* variable pattern used across the app (defined in
+   dark_mode.css) so light/dark mode work automatically.
+*/
+
+.commission-card,
+.commission-result-card,
+.commission-summary-card {
+    background-color: var(--tm-surface, #fff);
+    border: 1px solid var(--tm-border, #e9ecef);
+}
+
+#cc_no_selection {
+    color: var(--tm-muted, #6c757d);
+}
+
+.cc-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px dashed var(--tm-border, rgba(0, 0, 0, 0.08));
+    font-size: 0.95rem;
+}
+
+.cc-info-row:last-of-type {
+    border-bottom: none;
+}
+
+.cc-info-label {
+    color: var(--tm-muted, #6c757d);
+    font-weight: 600;
+}
+
+.cc-info-value {
+    font-weight: 700;
+}
+
+.commission-result-card {
+    border-radius: 14px;
+    transition: box-shadow 0.15s ease;
+}
+
+.commission-result-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.75rem auto;
+    font-size: 1.3rem;
+    color: #fff;
+}
+
+.commission-result-icon.company-icon {
+    background: linear-gradient(135deg, #0d6efd, #4f8bff);
+}
+
+.commission-result-icon.sales-icon {
+    background: linear-gradient(135deg, #198754, #2fbf7f);
+}
+
+.commission-result-label {
+    font-weight: 600;
+    color: var(--tm-muted, #6c757d);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.commission-result-value {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: var(--tm-body-color, #1c2333);
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+.commission-result-sub {
+    font-size: 0.82rem;
+    color: var(--tm-muted, #6c757d);
+}
+
+.commission-summary-card {
+    border-radius: 14px;
+}
+
+.commission-total-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #0d6efd;
+}
+
+html.dark-mode .commission-total-value {
+    color: #8ab4ff;
+}
+
+@media (max-width: 767.98px) {
+    .commission-result-value {
+        font-size: 1.5rem;
+    }
+    .commission-card .card-body,
+    .commission-result-card .card-body,
+    .commission-summary-card .card-body {
+        padding: 1.1rem;
+    }
+}
+
+/* RTL: keep info rows and result blocks mirrored correctly */
+html[dir="rtl"] .cc-info-row {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .commission-summary-card .d-flex {
+    flex-direction: row-reverse;
+}

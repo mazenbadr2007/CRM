@@ -1,0 +1,118 @@
+
+.client-list-container {
+    max-width: 100%;
+}
+
+
+.client-list-item {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+
+.client-list-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border-color: var(--primary-gold);
+}
+
+
+.client-info {
+    flex: 1; 
+}
+.client-name {
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+
+.client-project {
+    flex: 1;
+    color: #555;
+    font-weight: 500;
+}
+
+
+.client-status {
+    flex-basis: 180px; 
+    text-align: center;
+}
+.status-badge {
+    font-size: 0.8rem;
+    padding: 0.5em 1em;
+    font-weight: 600;
+}
+
+
+.client-actions {
+    flex-basis: 100px; 
+    text-align: right;
+}
+.btn-action {
+    color: #6c757d;
+    text-decoration: none;
+    margin-left: 1.25rem;
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+}
+.btn-action:hover {
+    color: var(--primary-gold);
+}
+button.btn-action {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+
+@media (max-width: 991.98px) {
+    .client-list-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 1rem 1.1rem;
+        margin-bottom: 0.6rem;
+    }
+    .client-info { width: 100%; }
+    .client-name { font-size: 0.98rem; margin-bottom: 0.15rem; }
+    .client-project {
+        flex: none;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+    .client-status, .client-actions {
+        flex-basis: auto;
+        width: auto;
+        text-align: left;
+    }
+    .client-status { margin: 0.1rem 0; }
+    .client-status .status-badge { padding: 0.4em 0.9em; font-size: 0.78rem; }
+    .client-actions {
+        width: 100%;
+        border-top: 1px solid #f0f0f0;
+        padding-top: 0.6rem;
+        margin-top: 0.15rem;
+        text-align: right;
+    }
+    .btn-action {
+        margin-left: 1rem;
+        font-size: 1.15rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        min-height: 40px;
+    }
+}

@@ -1,0 +1,68 @@
+/* sales_dashboard.css - Sales Dashboard page only */
+.sd-funnel-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+}
+.sd-funnel-label {
+    width: 110px;
+    flex-shrink: 0;
+    font-weight: 600;
+}
+.sd-funnel-track {
+    flex: 1;
+    height: 18px;
+    background-color: rgba(128, 128, 128, 0.15);
+    border-radius: 9px;
+    overflow: hidden;
+}
+.sd-funnel-bar {
+    height: 100%;
+    border-radius: 9px;
+    transition: width 0.4s ease;
+}
+.sd-funnel-value {
+    width: 90px;
+    flex-shrink: 0;
+    text-align: end;
+    font-weight: 600;
+}
+@media (max-width: 576px) {
+    .sd-funnel-label { width: 80px; font-size: 0.85rem; }
+    .sd-funnel-value { width: 70px; font-size: 0.85rem; }
+}
+
+/* KPI cards: keep the icon a perfect circle (it was squeezed into an oval
+   when the label wrapped) and let long labels wrap inside the text block. */
+.sd-kpis .stat-card {
+    height: 100%;
+}
+.sd-kpis .stat-icon {
+    flex: 0 0 60px;
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    aspect-ratio: 1 / 1;
+}
+.sd-kpis .stat-info {
+    min-width: 0;
+}
+.sd-kpis .stat-info .stat-title {
+    overflow-wrap: anywhere;
+}
+html[dir="rtl"] .sd-kpis .stat-icon {
+    margin-right: 0;
+    margin-left: 1.5rem;
+}
+@media (max-width: 575.98px) {
+    .sd-kpis .stat-icon {
+        flex-basis: 48px;
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+    }
+    html[dir="rtl"] .sd-kpis .stat-icon {
+        margin-left: 1rem;
+    }
+}

@@ -1,0 +1,138 @@
+
+.chart-container {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    height: 100%;
+    position: relative;
+}
+
+.chart-container canvas {
+    max-width: 100%;
+}
+
+@media (max-width: 767.98px) {
+    .chart-container {
+        padding: 1rem;
+    }
+
+    /* Only canvas-based chart cards get a fixed height on mobile.
+       The breakdown list card must size to its content, or its
+       progress-bar rows get clipped and overlap the card below it. */
+    .chart-container:not(.lead-source-breakdown) {
+        height: 280px;
+    }
+
+    .chart-container.lead-source-breakdown {
+        height: auto;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* ---- Lead Source Management ---- */
+.lead-source-section-title {
+    font-weight: 700;
+}
+
+.lead-source-live-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: #198754;
+}
+
+.lead-source-live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #198754;
+    display: inline-block;
+    animation: leadSourcePulse 1.8s ease-in-out infinite;
+}
+
+.lead-source-live-indicator.lead-source-live-error {
+    color: #dc3545;
+}
+.lead-source-live-indicator.lead-source-live-error .lead-source-live-dot {
+    background-color: #dc3545;
+    animation: none;
+}
+
+@keyframes leadSourcePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.lead-source-stat-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.1rem;
+    gap: 0.5rem;
+    height: 100%;
+}
+
+.lead-source-stat-card .lead-source-stat-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.15rem;
+    margin-right: 0;
+}
+
+.lead-source-stat-card .stat-info .stat-title {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+
+.lead-source-stat-card .stat-info .stat-number {
+    font-size: 1.5rem;
+}
+
+.lead-source-breakdown {
+    display: flex;
+    flex-direction: column;
+}
+
+.lead-source-breakdown-title {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.lead-source-breakdown-list {
+    flex: 1;
+}
+
+.lead-source-breakdown-item {
+    background: transparent;
+    border-left: none;
+    border-right: none;
+    padding: 0.65rem 0;
+}
+
+.lead-source-breakdown-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.lead-source-progress {
+    height: 6px;
+    margin-top: 0.4rem;
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 767.98px) {
+    .lead-source-stat-card {
+        padding: 0.85rem;
+    }
+    .lead-source-stat-card .lead-source-stat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    .lead-source-stat-card .stat-info .stat-number {
+        font-size: 1.25rem;
+    }
+}

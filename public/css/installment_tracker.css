@@ -1,0 +1,118 @@
+/* installment_tracker.css
+   Styles for the Installment Tracker page. Follows the same --tm-*
+   variable pattern used across the app (defined in dark_mode.css) so
+   light/dark mode work automatically, and the same mobile-card pattern
+   used by property_inventory.css for small screens.
+*/
+
+.it-summary-card {
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+}
+
+.it-summary-card .card-body {
+    padding: 1rem 1.1rem;
+}
+
+.it-summary-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    opacity: 0.9;
+}
+
+.it-summary-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-top: 0.2rem;
+}
+
+.it-summary-paid { background: linear-gradient(135deg, #198754, #2fbf7f); }
+.it-summary-pending { background: linear-gradient(135deg, #6c757d, #8b93a1); }
+.it-summary-overdue { background: linear-gradient(135deg, #dc3545, #ef5b6c); }
+.it-summary-total { background: linear-gradient(135deg, #0d6efd, #4f8bff); }
+
+.installment-card,
+.installment-mobile-card {
+    background-color: var(--tm-surface, #fff);
+}
+
+.installment-card .card-body {
+    padding: 1.5rem;
+}
+
+.it-status-badge {
+    font-weight: 600;
+}
+
+/* ---- Mobile card view (shown only below 768px) ---- */
+.installment-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.installment-mobile-card {
+    border: 1px solid var(--tm-border, #e9ecef);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+}
+
+.installment-mobile-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    gap: 0.5rem;
+}
+
+.installment-mobile-project {
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.installment-mobile-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
+    font-size: 0.92rem;
+}
+
+.installment-mobile-row:last-of-type {
+    border-bottom: none;
+}
+
+.installment-mobile-label {
+    color: var(--tm-muted, #6c757d);
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.installment-mobile-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+}
+
+@media (max-width: 767.98px) {
+    .installment-card .card-body {
+        padding: 1rem;
+    }
+    .it-summary-value {
+        font-size: 1.2rem;
+    }
+}
+
+/* RTL: keep mobile card rows, header, and actions mirrored correctly */
+html[dir="rtl"] .installment-mobile-actions {
+    justify-content: flex-start;
+}
+
+html[dir="rtl"] .installment-mobile-row {
+    flex-direction: row-reverse;
+}

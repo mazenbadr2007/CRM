@@ -1,0 +1,587 @@
+/* =========================================================
+   Dark Mode / Light Mode Theme Layer
+   This file only ADDS theme variables + dark-mode overrides.
+   It does not remove or replace any existing styles.
+   ========================================================= */
+
+/* ---------- Smooth transition animations (global) ---------- */
+html.theme-ready body,
+html.theme-ready .sidebar,
+html.theme-ready .card,
+html.theme-ready .modal-content,
+html.theme-ready .table,
+html.theme-ready .table td,
+html.theme-ready .table th,
+html.theme-ready .form-control,
+html.theme-ready .form-select,
+html.theme-ready .input-group-text,
+html.theme-ready .btn,
+html.theme-ready .alert,
+html.theme-ready .navbar,
+html.theme-ready .mobile-navbar,
+html.theme-ready .notification-center .notification-bell-btn,
+html.theme-ready .notification-panel,
+html.theme-ready .chart-container,
+html.theme-ready .fc,
+html.theme-ready .fc-daygrid-day,
+html.theme-ready .theme-toggle-btn,
+html.theme-ready .smart-alert {
+    transition: background-color .35s ease, color .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+/* Disable transitions momentarily on first paint to avoid a "flash"
+   animation from default -> stored theme (toggled off via JS shortly after load). */
+html.theme-no-transition * {
+    transition: none !important;
+}
+
+/* ---------- Light mode (default) variables ---------- */
+html {
+    --tm-body-bg: var(--main-bg, #f4f7fc);
+    --tm-body-color: #1c2333;
+    --tm-surface: #ffffff;
+    --tm-surface-alt: #f4f7fc;
+    --tm-border: #e3e7ef;
+    --tm-muted: #6c757d;
+    --tm-shadow: rgba(0, 0, 0, 0.08);
+    --tm-input-bg: #ffffff;
+    --tm-input-color: #1c2333;
+    --tm-primary-rgb: 13, 110, 253;
+}
+
+/* ---------- Dark mode variables ---------- */
+html.dark-mode {
+    --tm-body-bg: #12161f;
+    --tm-body-color: #e6e9f0;
+    --tm-surface: #1b2130;
+    --tm-surface-alt: #202839;
+    --tm-border: #2c3446;
+    --tm-muted: #a3adc2;
+    --tm-shadow: rgba(0, 0, 0, 0.45);
+    --tm-input-bg: #202839;
+    --tm-input-color: #e6e9f0;
+    --tm-primary-rgb: 88, 130, 242;
+
+    --bs-body-color: var(--tm-body-color);
+    --bs-body-bg: var(--tm-body-bg);
+    --bs-border-color: var(--tm-border);
+    --bs-tertiary-bg: var(--tm-surface);
+    --bs-secondary-bg: var(--tm-surface-alt);
+    --bs-primary-rgb: var(--tm-primary-rgb);
+    --bs-secondary-color: var(--tm-muted);
+
+    color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+html.dark-mode body {
+    color: var(--tm-body-color);
+    background-color: var(--tm-body-bg);
+}
+
+html.dark-mode .main-content {
+    background-color: var(--tm-body-bg);
+}
+
+html.dark-mode h1, html.dark-mode h2, html.dark-mode h3,
+html.dark-mode h4, html.dark-mode h5, html.dark-mode h6 {
+    color: var(--tm-body-color);
+}
+
+html.dark-mode .text-muted {
+    color: var(--tm-muted) !important;
+}
+
+html.dark-mode a { color: #8ab4ff; }
+html.dark-mode a:hover { color: #aecaff; }
+
+/* ---------- Sidebar ---------- */
+html.dark-mode .sidebar {
+    background-color: #161b28;
+    border-right: 1px solid var(--tm-border);
+}
+
+html.dark-mode .sidebar-header {
+    border-bottom-color: var(--tm-border);
+}
+
+html.dark-mode .sidebar ul li a {
+    color: var(--tm-muted);
+}
+
+html.dark-mode .sidebar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+}
+
+html.dark-mode .sidebar ul li.active a {
+    background-color: rgba(var(--tm-primary-rgb), 0.35);
+    color: #ffffff;
+}
+
+/* ---------- Navbar (top / mobile) ---------- */
+html.dark-mode .mobile-navbar {
+    background-color: #161b28;
+    color: #ffffff;
+    border-bottom: 1px solid var(--tm-border);
+}
+
+html.dark-mode .mobile-navbar .navbar-brand {
+    color: #ffffff;
+}
+
+html.dark-mode .mobile-navbar .menu-toggle-btn {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ---------- Theme toggle button ---------- */
+.theme-toggle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--tm-border);
+    background-color: var(--tm-surface);
+    color: var(--tm-body-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px var(--tm-shadow);
+}
+
+.theme-toggle-btn:hover {
+    transform: translateY(-1px);
+}
+
+.theme-toggle-desktop {
+    position: fixed;
+    top: 72px;
+    right: 28px;
+    z-index: 1049;
+}
+
+html[dir="rtl"] .theme-toggle-desktop {
+    right: auto;
+    left: 28px;
+}
+
+@media (max-width: 1199.98px) {
+    .theme-toggle-desktop {
+        top: 64px;
+    }
+}
+
+.theme-toggle-btn .fa-sun { display: none; color: #ffc94a; }
+.theme-toggle-btn .fa-moon { display: inline-block; color: #445; }
+
+html.dark-mode .theme-toggle-btn .fa-sun { display: inline-block; }
+html.dark-mode .theme-toggle-btn .fa-moon { display: none; }
+
+/* ---------- Cards ---------- */
+html.dark-mode .card,
+html.dark-mode .modal-content {
+    background-color: var(--tm-surface);
+    border-color: var(--tm-border);
+    color: var(--tm-body-color);
+    box-shadow: 0 2px 14px var(--tm-shadow);
+}
+
+html.dark-mode .card-header,
+html.dark-mode .modal-header,
+html.dark-mode .card-footer,
+html.dark-mode .modal-footer {
+    background-color: var(--tm-surface-alt);
+    border-color: var(--tm-border);
+}
+
+/* Client details modal title/phone were hardcoded to a dark, light-mode
+   text color (#343a40) in client_dashboard.css, so once the header
+   background switched to the dark surface color, the client name became
+   near-black text on a near-black background — effectively invisible.
+   Force proper dark-mode text colors here. */
+html.dark-mode .modal-header,
+html.dark-mode .modal-title,
+html.dark-mode .client-details-modal .modal-title {
+    color: var(--tm-body-color);
+}
+
+html.dark-mode .modal-header .text-muted,
+html.dark-mode .client-details-modal .modal-header small {
+    color: var(--tm-body-secondary, #adb5bd) !important;
+}
+
+/* Calendar "Follow-up Details" note box — was hardcoded to a light
+   background with no explicit text color, so it inherited the modal's
+   light dark-mode text color and became invisible (light text on a
+   light box). Give it proper dark-mode colors instead. */
+html.dark-mode .note-box {
+    background-color: var(--tm-surface-alt);
+    border-color: var(--tm-border);
+    color: var(--tm-body-color);
+}
+
+/* ---------- Tables ---------- */
+html.dark-mode .table {
+    --bs-table-color: var(--tm-body-color);
+    --bs-table-bg: var(--tm-surface);
+    --bs-table-border-color: var(--tm-border);
+    --bs-table-striped-bg: rgba(255, 255, 255, 0.04);
+    --bs-table-hover-bg: rgba(255, 255, 255, 0.08);
+    color: var(--tm-body-color);
+}
+
+html.dark-mode .table thead th {
+    background-color: var(--tm-surface-alt);
+    color: var(--tm-body-color);
+    border-color: var(--tm-border);
+}
+
+/* ---------- Forms ---------- */
+html.dark-mode .form-control,
+html.dark-mode .form-select,
+html.dark-mode .input-group-text {
+    background-color: var(--tm-input-bg);
+    border-color: var(--tm-border);
+    color: var(--tm-input-color);
+}
+
+html.dark-mode .form-control::placeholder {
+    color: var(--tm-muted);
+}
+
+html.dark-mode .form-control:focus,
+html.dark-mode .form-select:focus {
+    background-color: var(--tm-input-bg);
+    border-color: rgba(var(--tm-primary-rgb), 0.6);
+    box-shadow: 0 0 0 0.25rem rgba(var(--tm-primary-rgb), 0.25);
+    color: var(--tm-input-color);
+}
+
+html.dark-mode .form-check-input {
+    background-color: var(--tm-input-bg);
+    border-color: var(--tm-border);
+}
+
+html.dark-mode .form-check-input:checked {
+    background-color: rgba(var(--tm-primary-rgb), 1);
+    border-color: rgba(var(--tm-primary-rgb), 1);
+}
+
+html.dark-mode label,
+html.dark-mode .form-label {
+    color: var(--tm-body-color);
+}
+
+/* ---------- Buttons ---------- */
+html.dark-mode .btn-light,
+html.dark-mode .btn-outline-secondary {
+    background-color: var(--tm-surface-alt);
+    border-color: var(--tm-border);
+    color: var(--tm-body-color);
+}
+
+html.dark-mode .btn-outline-primary {
+    color: #8ab4ff;
+    border-color: #8ab4ff;
+}
+
+html.dark-mode .btn-outline-primary:hover {
+    background-color: rgba(var(--tm-primary-rgb), 0.2);
+    color: #ffffff;
+}
+
+html.dark-mode .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* ---------- Modals ---------- */
+html.dark-mode .modal-backdrop.show {
+    opacity: 0.75;
+}
+
+/* ---------- Alerts ---------- */
+html.dark-mode .alert-primary   { background-color: rgba(88, 130, 242, .18); border-color: rgba(88, 130, 242, .35); color: #cfe0ff; }
+html.dark-mode .alert-success   { background-color: rgba(40, 167, 69, .18); border-color: rgba(40, 167, 69, .35); color: #b3f0c2; }
+html.dark-mode .alert-danger    { background-color: rgba(220, 53, 69, .18); border-color: rgba(220, 53, 69, .35); color: #ffc2c9; }
+html.dark-mode .alert-warning   { background-color: rgba(255, 193, 7, .18); border-color: rgba(255, 193, 7, .35); color: #ffe49e; }
+html.dark-mode .alert-info      { background-color: rgba(13, 202, 240, .18); border-color: rgba(13, 202, 240, .35); color: #b8ecf9; }
+html.dark-mode .alert-secondary { background-color: rgba(173, 181, 189, .15); border-color: rgba(173, 181, 189, .3); color: var(--tm-body-color); }
+
+html.dark-mode .smart-alert {
+    background-color: var(--tm-surface);
+    border-color: var(--tm-border);
+    color: var(--tm-body-color);
+    box-shadow: 0 4px 18px var(--tm-shadow);
+}
+
+/* ---------- Notifications ---------- */
+html.dark-mode .notification-bell-btn {
+    background-color: var(--tm-surface);
+    color: var(--tm-body-color);
+    box-shadow: 0 2px 10px var(--tm-shadow);
+}
+
+html.dark-mode .notification-panel {
+    background-color: var(--tm-surface);
+    border: 1px solid var(--tm-border);
+    color: var(--tm-body-color);
+    box-shadow: 0 8px 24px var(--tm-shadow);
+}
+
+html.dark-mode .notification-panel-header {
+    background-color: var(--tm-surface-alt);
+    border-bottom: 1px solid var(--tm-border);
+}
+
+html.dark-mode .notification-list .notification-item {
+    border-bottom-color: var(--tm-border);
+    color: var(--tm-body-color);
+}
+
+html.dark-mode .notification-list .notification-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+html.dark-mode .notification-empty {
+    color: var(--tm-muted);
+}
+
+/* ---------- Charts ---------- */
+html.dark-mode .chart-container {
+    background-color: var(--tm-surface);
+    border: 1px solid var(--tm-border);
+    box-shadow: 0 2px 14px var(--tm-shadow);
+}
+
+/* ---------- Lead Source Management ---------- */
+html.dark-mode .lead-source-progress {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+html.dark-mode .lead-source-live-indicator {
+    color: #4fd1a5;
+}
+html.dark-mode .lead-source-live-indicator .lead-source-live-dot {
+    background-color: #4fd1a5;
+}
+html.dark-mode .lead-source-live-indicator.lead-source-live-error {
+    color: #ff8080;
+}
+html.dark-mode .lead-source-live-indicator.lead-source-live-error .lead-source-live-dot {
+    background-color: #ff8080;
+}
+
+html.dark-mode .page-title,
+html.dark-mode .page-subtitle {
+    color: var(--tm-body-color);
+}
+
+/* ---------- Calendar (FullCalendar) ---------- */
+html.dark-mode .fc {
+    color: var(--tm-body-color);
+}
+
+html.dark-mode .fc-theme-standard td,
+html.dark-mode .fc-theme-standard th,
+html.dark-mode .fc-theme-standard .fc-scrollgrid {
+    border-color: var(--tm-border);
+}
+
+html.dark-mode .fc .fc-daygrid-day {
+    background-color: var(--tm-surface);
+}
+
+html.dark-mode .fc .fc-col-header-cell {
+    background-color: var(--tm-surface-alt);
+}
+
+html.dark-mode .fc .fc-daygrid-day.fc-day-today {
+    background-color: rgba(var(--tm-primary-rgb), 0.2);
+}
+
+html.dark-mode .fc .fc-button-primary {
+    background-color: rgba(var(--tm-primary-rgb), 1);
+    border-color: rgba(var(--tm-primary-rgb), 1);
+}
+
+html.dark-mode .fc .fc-button-primary:disabled {
+    background-color: rgba(var(--tm-primary-rgb), .5);
+    border-color: rgba(var(--tm-primary-rgb), .5);
+}
+
+html.dark-mode .fc-event {
+    border-color: var(--tm-border);
+}
+
+/* =========================================================
+   Extra dark-mode fixes: page-specific "white box" components
+   (reminders, follow-ups list, manager dashboard, sales pipeline,
+   client dashboard cards). These pages use their own hard-coded
+   #ffffff backgrounds and CSS vars that were never wired to the
+   theme, so they stayed white (and unreadable) in dark mode.
+   ========================================================= */
+
+/* ---- CSS variables used by client_dashboard.css / manager cards ---- */
+html.dark-mode {
+    --card-bg: var(--tm-surface);
+    --main-bg: var(--tm-body-bg);
+    --border-color: var(--tm-border);
+}
+
+/* ---- Reminders page (summary cards + reminder/history items) ---- */
+html.dark-mode .summary-card,
+html.dark-mode .reminder-item,
+html.dark-mode .history-item {
+    background-color: var(--tm-surface);
+    border-color: var(--tm-border);
+    color: var(--tm-body-color);
+    box-shadow: 0 4px 15px var(--tm-shadow);
+}
+html.dark-mode .summary-label,
+html.dark-mode .reminder-title,
+html.dark-mode .reminder-datetime {
+    color: var(--tm-muted);
+}
+html.dark-mode .reminder-actions .btn-action {
+    color: var(--tm-muted);
+}
+html.dark-mode .history-icon {
+    background-color: var(--tm-surface-alt);
+}
+
+/* ---- Follow-ups list ---- */
+html.dark-mode .client-list-item {
+    background-color: var(--tm-surface);
+    border-color: var(--tm-border);
+    color: var(--tm-body-color);
+    box-shadow: 0 4px 15px var(--tm-shadow);
+}
+html.dark-mode .client-project {
+    color: var(--tm-muted);
+}
+html.dark-mode .btn-action {
+    color: var(--tm-muted);
+}
+html.dark-mode .client-name,
+html.dark-mode .client-info .client-name,
+html.dark-mode .reminder-info .client-name {
+    color: var(--tm-body-color);
+}
+html.dark-mode .client-phone {
+    color: var(--tm-muted) !important;
+}
+
+/* ---- Manager dashboard ---- */
+html.dark-mode .stat-card,
+html.dark-mode .data-card {
+    background-color: var(--tm-surface);
+    color: var(--tm-body-color);
+    box-shadow: 0 5px 20px var(--tm-shadow);
+}
+html.dark-mode .stat-info .stat-title {
+    color: var(--tm-muted);
+}
+html.dark-mode .stat-info .stat-number {
+    color: var(--tm-body-color);
+}
+html.dark-mode .data-card .card-header {
+    background-color: var(--tm-surface-alt);
+    border-bottom-color: var(--tm-border);
+    color: var(--tm-body-color);
+}
+html.dark-mode .list-group-item {
+    background-color: var(--tm-surface);
+    color: var(--tm-body-color);
+    border-color: var(--tm-border);
+}
+
+/* ---- Sales pipeline (kanban) ---- */
+html.dark-mode .kanban-column {
+    background-color: var(--tm-surface-alt);
+    border-color: var(--tm-border);
+}
+html.dark-mode .kanban-card {
+    background-color: var(--tm-surface);
+    border-color: var(--tm-border);
+}
+html.dark-mode .kanban-card-name {
+    color: var(--tm-body-color) !important;
+}
+html.dark-mode .kanban-card-body {
+    color: var(--tm-muted);
+}
+html.dark-mode .kanban-empty {
+    color: var(--tm-muted);
+}
+
+/* ---- Client dashboard cards (client_card / filters-bar / form-card) ---- */
+html.dark-mode .client-card,
+html.dark-mode .form-card,
+html.dark-mode .feature-card,
+html.dark-mode .filters-bar {
+    background-color: var(--tm-surface);
+    color: var(--tm-body-color);
+    box-shadow: 0 5px 20px var(--tm-shadow);
+}
+html.dark-mode .client-card .card-header {
+    background-color: var(--tm-surface-alt);
+}
+html.dark-mode .client-card .card-title,
+html.dark-mode .page-header .page-title {
+    color: var(--tm-body-color);
+}
+html.dark-mode .page-header {
+    background-color: var(--tm-surface);
+    border-bottom-color: var(--tm-border);
+}
+html.dark-mode .page-header .page-subtitle,
+html.dark-mode .client-card .list-group-item strong,
+html.dark-mode .client-data-section h6,
+html.dark-mode .filter-label,
+html.dark-mode .filters-summary {
+    color: var(--tm-muted);
+}
+html.dark-mode .client-card .list-group-item span {
+    color: var(--tm-body-color);
+}
+/* The details modal's list items live outside .client-card, so they
+   never picked up the label/value colors above and stayed at their
+   light-mode defaults (dark grey/near-black) — unreadable on the dark
+   modal background. Give them the same dark-mode treatment directly. */
+html.dark-mode .client-details-modal .list-group-item strong {
+    color: var(--tm-muted);
+}
+html.dark-mode .client-details-modal .list-group-item span {
+    color: var(--tm-body-color);
+}
+html.dark-mode .client-details-modal .client-data-section h6 {
+    color: var(--tm-muted);
+    border-bottom-color: var(--tm-border);
+}
+html.dark-mode .client-card .card-footer {
+    border-top-color: var(--tm-border);
+}
+html.dark-mode .client-note {
+    background-color: var(--tm-surface-alt);
+    border-color: var(--tm-border);
+    color: var(--tm-body-color);
+}
+html.dark-mode .filter-input {
+    background-color: var(--tm-input-bg);
+    border-color: var(--tm-border);
+    color: var(--tm-input-color);
+}
+
+/* ---------- Scrollbar polish (cosmetic only) ---------- */
+html.dark-mode ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+html.dark-mode ::-webkit-scrollbar-track {
+    background: var(--tm-body-bg);
+}
+html.dark-mode ::-webkit-scrollbar-thumb {
+    background: var(--tm-border);
+    border-radius: 5px;
+}

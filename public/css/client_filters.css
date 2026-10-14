@@ -1,0 +1,32 @@
+/* client_filters.css - advanced Employee / Status / Date filters + live stats */
+.cf-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+}
+.cf-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(128, 128, 128, 0.35);
+    background: rgba(128, 128, 128, 0.08);
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+.cf-chip:hover {
+    background: rgba(13, 110, 253, 0.14);
+    color: inherit;
+}
+.cf-chip.active {
+    background: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+}
+.cf-advanced {
+    margin-bottom: 1rem;
+}

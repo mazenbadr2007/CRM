@@ -1,0 +1,122 @@
+/* developers.css
+   Dedicated stylesheet for the Developers module (Developers list,
+   Developer detail/Projects, and Project Properties pages).
+   Follows the same design pattern as property_inventory.css: a normal
+   table on md+ screens, and a stacked card layout below 768px so nothing
+   overflows the viewport on phones.
+*/
+
+.developer-card .card-body {
+    padding: 1.5rem;
+}
+
+/* ---- Mobile card view (shown only below 768px) ---- */
+.developer-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.developer-mobile-card {
+    border: 1px solid var(--tm-border, #e9ecef);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    background-color: var(--tm-surface, #fff);
+}
+
+.developer-mobile-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.developer-mobile-name {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: inherit;
+}
+
+.developer-mobile-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
+    font-size: 0.92rem;
+    flex-wrap: wrap;
+}
+
+.developer-mobile-row > span:last-child {
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    text-align: right;
+}
+
+/* Developer detail page header: name+icon and phone/email+icon were
+   using Bootstrap's me-1/me-2 margin utilities, which put the gap in the
+   wrong place once combined with this page's inline-flex/RTL layout —
+   the icon ended up flush against the text with no visible space. Use
+   an explicit flex gap instead, which is direction-agnostic and always
+   produces a consistent gap between icon and text regardless of LTR/RTL. */
+.developer-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.developer-subtitle {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+}
+
+.developer-subtitle-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.developer-mobile-row:last-of-type {
+    border-bottom: none;
+}
+
+.developer-mobile-label {
+    color: var(--tm-muted, #6c757d);
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.developer-mobile-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+}
+
+@media (max-width: 767.98px) {
+    .developer-card .card-body {
+        padding: 1rem;
+    }
+}
+
+/* Dark mode is handled automatically via the --tm-* variables above
+   (defined in dark_mode.css and swapped when html.dark-mode is active). */
+
+/* RTL support */
+html[dir="rtl"] .developer-mobile-actions {
+    justify-content: flex-start;
+}
+
+.rtl-flip {
+    display: inline-block;
+}
+
+html[dir="rtl"] .rtl-flip {
+    transform: scaleX(-1);
+}

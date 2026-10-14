@@ -1,0 +1,80 @@
+/* property_inventory.css
+   Dedicated stylesheet for the Property Inventory page.
+   Fixes the mobile layout: the 10-column table used to overflow the
+   viewport on small screens (only wrapped in .table-responsive, which
+   just forces horizontal scroll on the whole table). Below the md
+   breakpoint we now hide the table and show a stacked card layout
+   instead, matching the pattern already used on Clients Dashboard.
+*/
+
+.property-card .card-body {
+    padding: 1.5rem;
+}
+
+/* ---- Mobile card view (shown only below 768px) ---- */
+.property-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.property-mobile-card {
+    border: 1px solid var(--tm-border, #e9ecef);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    background-color: var(--tm-surface, #fff);
+}
+
+.property-mobile-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    gap: 0.5rem;
+}
+
+.property-mobile-project {
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.property-mobile-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
+    font-size: 0.92rem;
+}
+
+.property-mobile-row:last-of-type {
+    border-bottom: none;
+}
+
+.property-mobile-label {
+    color: var(--tm-muted, #6c757d);
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.property-mobile-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+}
+
+@media (max-width: 767.98px) {
+    .property-card .card-body {
+        padding: 1rem;
+    }
+}
+
+/* Dark mode is handled automatically via the --tm-* variables above
+   (defined in dark_mode.css and swapped when html.dark-mode is active),
+   so no separate .dark-mode overrides are needed here. */
+
+/* RTL: keep mobile card rows and header mirrored correctly */
+html[dir="rtl"] .property-mobile-actions {
+    justify-content: flex-start;
+}

@@ -1,0 +1,5 @@
+/* property_matching.css - Property Matching page only */
+.pm-card .pm-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
